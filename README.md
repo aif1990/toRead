@@ -1,30 +1,25 @@
 toRead
 ======
 
-Main Usability
---------------
+Core
+----
 
-> 1st version - TB adapted
+ 1. Have a lists of books:
+    * The default lists are: `to read`, `in progress`, and `read`;
+    * Show the list of books;
 
- 1. Have a list of wanted books to read;
+ 2. Add a new book to a list:
+    * Add by
+      - inputting the book's title, author, etc., or
+      - scanning the book's barcode;
 
- 2. Add a new book to the list and save it on an internal database;
-    * Save option:
-      - plain text;
-      - barcode scan a book and add it to the 'toRead' list with one
-        silky touch...;
-    * Priorities;
-    * Set a deadline for the book to be read and notify user within X
-      days of approaching deadline;
+ 3. Move books between lists (e.g. move a book from `in progress` to
+ `read`);
 
- 3. Remove an already read book from the list, mark it as : 'Read'
- (smt like that), save it to the already read books;
+More
+----
 
-4. Mark a book as 'in progress' (smt like that) when the user is
-currently reading it.
-
-Future Updates
---------------
+ 0. Other features moved from above: book priorities; book deadlines;
 
  1. Implement a Google Books Search and allow the user to SAVE it as
  it finds the good book (this will go along with the other save
