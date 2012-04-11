@@ -6,24 +6,33 @@ Core
 
  1. Have a lists of books:
     * The default lists are: `to read`, `in progress`, and `read`;
-    * Show the list of books;
+    * Show the lists of books;
 
  2. Add a new book to a list:
-    * Add by
-      - inputting the book's title, author, etc., or
-      - scanning the book's barcode;
+    * Add by inputting the book's title, author, etc.;
 
  3. Move books between lists (e.g. move a book from `in progress` to
- `read`);
+ `read`).
 
-More
-----
-
- 0. Other features moved from above: book priorities; book deadlines;
+More GBS
+--------
 
  1. Implement a Google Books Search and allow the user to SAVE it as
- it finds the good book (this will go along with the other save
- options);
+ they find the good book (this will go along with the other save
+ options).
+
+More BC
+-------
+
+> depends on More GBS
+
+ 1. Add a new book by scanning the book's barcode and searching that
+ barcode online.
+
+More N
+------
+
+ 1. Other features moved from above: book priorities; book deadlines;
 
  2. Allow the user to SEE MORE DETAILS about a book when barcode scans
  it but only?? saves the title;
