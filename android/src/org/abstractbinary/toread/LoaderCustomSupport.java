@@ -1,9 +1,15 @@
 package org.abstractbinary.toread;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.ListFragment;
+import android.app.LoaderManager;
+import android.content.AsyncTaskLoader;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.Loader;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -11,17 +17,6 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.ListFragment;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.AsyncTaskLoader;
-import android.support.v4.content.IntentCompat;
-import android.support.v4.content.Loader;
-import android.support.v4.content.pm.ActivityInfoCompat;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v4.widget.SearchViewCompat;
-import android.support.v4.widget.SearchViewCompat.OnQueryTextListenerCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,6 +28,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SearchView;
+import android.widget.SearchView.OnQueryTextListener;
 import android.widget.TextView;
 
 import java.io.File;
@@ -45,13 +42,12 @@ import java.util.List;
 /**
  * Demonstration of the implementation of a custom Loader.
  */
-public class LoaderCustomSupport extends FragmentActivity {
-
+public class LoaderCustomSupport extends Fragment {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        FragmentManager fm = getSupportFragmentManager();
+        FragmentManager fm = getFragmentManager();
 
         // Create the list fragment and add it as our sole content.
         if (fm.findFragmentById(android.R.id.content) == null) {
@@ -150,7 +146,7 @@ public class LoaderCustomSupport extends FragmentActivity {
             int configChanges = mLastConfiguration.updateFrom(res.getConfiguration());
             boolean densityChanged = mLastDensity != res.getDisplayMetrics().densityDpi;
             if (densityChanged || (configChanges&(ActivityInfo.CONFIG_LOCALE
-                    |ActivityInfoCompat.CONFIG_UI_MODE|ActivityInfo.CONFIG_SCREEN_LAYOUT)) != 0) {
+                    |ActivityInfo.CONFIG_UI_MODE|ActivityInfo.CONFIG_SCREEN_LAYOUT)) != 0) {
                 mLastDensity = res.getDisplayMetrics().densityDpi;
                 return true;
             }
@@ -174,8 +170,8 @@ public class LoaderCustomSupport extends FragmentActivity {
             mLoader.getContext().registerReceiver(this, filter);
             // Register for events related to sdcard installation.
             IntentFilter sdFilter = new IntentFilter();
-            sdFilter.addAction(IntentCompat.ACTION_EXTERNAL_APPLICATIONS_AVAILABLE);
-            sdFilter.addAction(IntentCompat.ACTION_EXTERNAL_APPLICATIONS_UNAVAILABLE);
+            sdFilter.addAction(Intent.ACTION_EXTERNAL_APPLICATIONS_AVAILABLE);
+            sdFilter.addAction(Intent.ACTION_EXTERNAL_APPLICATIONS_UNAVAILABLE);
             mLoader.getContext().registerReceiver(this, sdFilter);
         }
 
@@ -389,7 +385,7 @@ public class LoaderCustomSupport extends FragmentActivity {
         // If non-null, this is the current filter the user has provided.
         String mCurFilter;
 
-        OnQueryTextListenerCompat mOnQueryTextListenerCompat;
+        OnQueryTextListener mOnQueryTextListener;
 
         @Override public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
@@ -417,21 +413,25 @@ public class LoaderCustomSupport extends FragmentActivity {
             // Place an action bar item for searching.
             MenuItem item = menu.add("Search");
             item.setIcon(android.R.drawable.ic_menu_search);
-            MenuItemCompat.setShowAsAction(item, MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
-            View searchView = SearchViewCompat.newSearchView(getActivity());
+            item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+            SearchView searchView = new SearchView(getActivity());
             if (searchView != null) {
-                SearchViewCompat.setOnQueryTextListener(searchView,
-                        new OnQueryTextListenerCompat() {
-                    @Override
-                    public boolean onQueryTextChange(String newText) {
-                        // Called when the action bar search text has changed.  Since this
-                        // is a simple array adapter, we can just have it do the filtering.
-                        mCurFilter = !TextUtils.isEmpty(newText) ? newText : null;
-                        mAdapter.getFilter().filter(mCurFilter);
-                        return true;
-                    }
-                });
-                MenuItemCompat.setActionView(item, searchView);
+                    searchView.setOnQueryTextListener(new OnQueryTextListener() {
+                                    @Override
+                                    public boolean onQueryTextChange(String newText) {
+                                            // Called when the action bar search text has changed.  Since this
+                                            // is a simple array adapter, we can just have it do the filtering.
+                                            mCurFilter = !TextUtils.isEmpty(newText) ? newText : null;
+                                            mAdapter.getFilter().filter(mCurFilter);
+                                            return true;
+                                    }
+
+                                    @Override
+                                    public boolean onQueryTextSubmit(String query) {
+                                            return onQueryTextChange(query);
+                                    }
+                            });
+                    item.setActionView(searchView);
             }
         }
 
