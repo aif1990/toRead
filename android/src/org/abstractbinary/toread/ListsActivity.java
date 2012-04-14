@@ -30,11 +30,11 @@ public class ListsActivity extends FragmentActivity {
 
                 mTabsAdapter = new TabsAdapter(this, mTabHost, mViewPager);
 
-                mTabsAdapter.addTab(mTabHost.newTabSpec("simple").setIndicator("Simple"),
-                                    FragmentStackSupport.CountingFragment.class, null);
-                mTabsAdapter.addTab(mTabHost.newTabSpec("contacts").setIndicator("Contacts"),
-                                    LoaderCursorSupport.CursorLoaderListFragment.class, null);
-                mTabsAdapter.addTab(mTabHost.newTabSpec("custom").setIndicator("Custom"),
+                mTabsAdapter.addTab(mTabHost.newTabSpec("simple").setIndicator("To Read"),
+                                    LoaderCustomSupport.AppListFragment.class, null);
+                mTabsAdapter.addTab(mTabHost.newTabSpec("contacts").setIndicator("In Progress"),
+                                    LoaderCustomSupport.AppListFragment.class, null);
+                mTabsAdapter.addTab(mTabHost.newTabSpec("custom").setIndicator("Read"),
                                     LoaderCustomSupport.AppListFragment.class, null);
 
                 if (savedInstanceState != null) {
