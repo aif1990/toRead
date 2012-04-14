@@ -40,15 +40,17 @@ More N
  3. EXTEND the 'toRead' list to 'online' articles, somehow the user
  can be able to add it to its 'toRead' list directly from his browser;
 
- 4. Classify 'things' to read as: books, arcticles, lectures, etc. and
+ 4. Sync app with Amazon Search and Amazon WishList;
+
+ 5. Classify 'things' to read as: books, arcticles, lectures, etc. and
  maybe allow user to organize them by CATEGORIES (e.g School,
  University, Work, Hobby, etc.) - this will obviously extend the
  database already owned;
 
- 5. GeoLocation SERVICES? Maybe when the user enters a library,
+ 6. GeoLocation SERVICES? Maybe when the user enters a library,
  recognize and annoy him with making him check his 'toRead' list;
 
- 6. SUGGESTION? Somehow to implement a prediction algorithm based on
+ 7. SUGGESTION? Somehow to implement a prediction algorithm based on
  the previously read books in order to make interesting suggestions
  for the user to read: smt like: if the user used to read 'Economics'
  articles but did not read them for a long time now, maybe suggest him
