@@ -29,6 +29,24 @@
 
 #pragma mark - View lifecycle
 
+/*- (void)loadView 
+{
+    [super loadView];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.pageViewController.view.bounds];
+    [imageView setImage:[UIImage imageNamed:@"paper.jpg"]];
+    [self.pageViewController.view addSubview:imageView];
+    
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+    
+    [self.tableView setBackgroundColor:[UIColor clearColor]];
+    [self.pageViewController.view addSubview:self.tableView];  
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+}*/
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -51,12 +69,14 @@
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         pageViewRect = CGRectInset(pageViewRect, 40.0, 40.0);
     }
+    
     self.pageViewController.view.frame = pageViewRect;
 
     [self.pageViewController didMoveToParentViewController:self];    
 
     // Add the page view controller's gesture recognizers to the book view controller's view so that the gestures are started more easily.
     self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
+    
 }
 
 - (void)viewDidUnload
@@ -85,6 +105,7 @@
 {
 	[super viewDidDisappear:animated];
 }
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

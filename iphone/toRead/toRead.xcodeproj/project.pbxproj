@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15545A0D1538DC01008920CF /* paper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 15545A0C1538DC01008920CF /* paper.jpg */; };
 		15DDAA4C15376EF500171667 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15DDAA4B15376EF500171667 /* UIKit.framework */; };
 		15DDAA4E15376EF500171667 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15DDAA4D15376EF500171667 /* Foundation.framework */; };
 		15DDAA5015376EF500171667 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15DDAA4F15376EF500171667 /* CoreGraphics.framework */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15545A0C1538DC01008920CF /* paper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = paper.jpg; sourceTree = "<group>"; };
 		15DDAA4715376EF500171667 /* toRead.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = toRead.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15DDAA4B15376EF500171667 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		15DDAA4D15376EF500171667 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -119,6 +121,7 @@
 		15DDAA5115376EF500171667 /* toRead */ = {
 			isa = PBXGroup;
 			children = (
+				15545A0C1538DC01008920CF /* paper.jpg */,
 				15DDAA5A15376EF500171667 /* AppDelegate.h */,
 				15DDAA5B15376EF500171667 /* AppDelegate.m */,
 				15DDAA5D15376EF500171667 /* RootViewController.h */,
@@ -238,6 +241,7 @@
 				15DDAA5615376EF500171667 /* InfoPlist.strings in Resources */,
 				15DDAA6815376EF500171667 /* MainStoryboard_iPhone.storyboard in Resources */,
 				15DDAA6B15376EF500171667 /* MainStoryboard_iPad.storyboard in Resources */,
+				15545A0D1538DC01008920CF /* paper.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DataViewController : UIViewController
+@interface DataViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+{
+    UITableView *tableView;
+}
+
 @property (strong, nonatomic) IBOutlet UILabel *dataLabel;
+@property (weak, nonatomic) IBOutlet UIView *customView;
+@property (nonatomic, retain) UITableView *tableView;
 @property (strong, nonatomic) id dataObject;
+
 @end

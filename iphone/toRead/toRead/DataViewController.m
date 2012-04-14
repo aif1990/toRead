@@ -11,7 +11,9 @@
 @implementation DataViewController
 
 @synthesize dataLabel = _dataLabel;
+@synthesize customView = _customView;
 @synthesize dataObject = _dataObject;
+@synthesize tableView = _tableView;
 
 - (void)didReceiveMemoryWarning
 {
@@ -21,6 +23,21 @@
 
 #pragma mark - View lifecycle
 
+- (void)loadView 
+{
+    [super loadView];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    [imageView setImage:[UIImage imageNamed:@"paper.jpg"]];
+    [self.customView addSubview:imageView];
+    
+    self.tableView = [[UITableView alloc] initWithFrame:self.customView.bounds];
+    
+    [self.tableView setBackgroundColor:[UIColor clearColor]];
+    [self.customView setBackgroundColor:[UIColor clearColor]];
+    [self.customView addSubview:self.tableView];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -29,6 +46,7 @@
 
 - (void)viewDidUnload
 {
+    [self setCustomView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -53,6 +71,29 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
 	[super viewDidDisappear:animated];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)theTableView 
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)theTableView numberOfRowsInSection:(NSInteger)section 
+{
+    return 3;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)theTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    cell.textLabel.text = @"Hello, World";
+    
+    return cell;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
