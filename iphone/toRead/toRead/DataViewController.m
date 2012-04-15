@@ -27,14 +27,17 @@
 {
     [super loadView];
     
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    [imageView setImage:[UIImage imageNamed:@"paper.jpg"]];
-    [self.customView addSubview:imageView];
-    
     self.tableView = [[UITableView alloc] initWithFrame:self.customView.bounds];
     
-    [self.tableView setBackgroundColor:[UIColor clearColor]];
-    [self.customView setBackgroundColor:[UIColor clearColor]];
+    /*UIImageView *view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"paper.jpg"]];
+    self.tableView.backgroundView = view;*/
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    self.tableView.backgroundColor = [UIColor clearColor];
+    self.customView.backgroundColor = [UIColor clearColor];
+    
     [self.customView addSubview:self.tableView];
 }
 
@@ -94,6 +97,19 @@
     cell.textLabel.text = @"Hello, World";
     
     return cell;
+}
+
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    return YES;
+}
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        //add code here for when you hit delete
+    }    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

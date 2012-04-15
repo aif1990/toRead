@@ -29,24 +29,6 @@
 
 #pragma mark - View lifecycle
 
-/*- (void)loadView 
-{
-    [super loadView];
-    
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.pageViewController.view.bounds];
-    [imageView setImage:[UIImage imageNamed:@"paper.jpg"]];
-    [self.pageViewController.view addSubview:imageView];
-    
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
-    
-    [self.tableView setBackgroundColor:[UIColor clearColor]];
-    [self.pageViewController.view addSubview:self.tableView];  
-    
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-}*/
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
