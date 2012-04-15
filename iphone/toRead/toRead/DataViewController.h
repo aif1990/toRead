@@ -17,5 +17,4 @@
 @property (weak, nonatomic) IBOutlet UIView *customView;
 @property (nonatomic, retain) UITableView *tableView;
 @property (strong, nonatomic) id dataObject;
-
 @end

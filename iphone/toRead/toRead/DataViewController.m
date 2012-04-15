@@ -28,7 +28,7 @@
     [super loadView];
     
     self.tableView = [[UITableView alloc] initWithFrame:self.customView.bounds];
-    
+      
     /*UIImageView *view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"paper.jpg"]];
     self.tableView.backgroundView = view;*/
     
@@ -109,7 +109,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //add code here for when you hit delete
-    }    
+    }  
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RootViewController : UIViewController <UIPageViewControllerDelegate>
+@interface RootViewController : UIViewController <UIPageViewControllerDelegate, UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 

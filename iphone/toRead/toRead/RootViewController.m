@@ -54,11 +54,25 @@
     
     self.pageViewController.view.frame = pageViewRect;
 
-    [self.pageViewController didMoveToParentViewController:self];    
+    [self.pageViewController didMoveToParentViewController:self];   
+    
+    //EDITED Need to take care of all gestureRecogizers. Got a bug when only setting the delegate for Tap
+    for (UIGestureRecognizer *gR in self.pageViewController.gestureRecognizers) {
+        gR.delegate = self;
+    }
 
     // Add the page view controller's gesture recognizers to the book view controller's view so that the gestures are started more easily.
-    self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
+    //self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
     
+}
+
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    //Touch gestures below top bar should not make the page turn.
+    //EDITED Check for only Tap here instead.
+    if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]) {
+        return NO;
+    }
+    return YES;
 }
 
 - (void)viewDidUnload
