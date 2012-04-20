@@ -7,6 +7,7 @@
 //
 
 #import "DataViewController.h"
+#import "DetailViewController.h"
 
 @implementation DataViewController
 
@@ -14,6 +15,7 @@
 @synthesize customView = _customView;
 @synthesize dataObject = _dataObject;
 @synthesize tableView = _tableView;
+@synthesize detailView = _detailView;
 
 - (void)didReceiveMemoryWarning
 {
@@ -90,27 +92,40 @@
     
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     cell.textLabel.text = @"Hello, World";
-    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+   
     return cell;
 }
 
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return YES if you want the specified item to be editable.
-    return YES;
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    _detailView = [self.storyboard instantiateViewControllerWithIdentifier:@"detail"];
+    [self presentModalViewController:_detailView animated:YES];
 }
 
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath 
+{
+    
+}
+
+
+// Override to support conditional editing of the table view.
+/*- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    return YES;
+}*/
+
 // Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+/*- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //add code here for when you hit delete
     }  
-}
+}*/
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -121,5 +136,9 @@
         return YES;
     }
 }
+
+/*-(void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    self.tableView.editing = TRUE;
+}*/
 
 @end

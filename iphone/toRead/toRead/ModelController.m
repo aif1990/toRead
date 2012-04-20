@@ -32,8 +32,10 @@
     self = [super init];
     if (self) {
         // Create the data model.
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        _pageData = [[dateFormatter monthSymbols] copy];
+        //NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        //_pageData = [[dateFormatter monthSymbols] copy];
+        NSArray* lists = [[NSArray alloc] initWithObjects:@"Done", @"To Read", nil];
+        _pageData = [lists copy];
     }
     return self;
 }
