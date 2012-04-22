@@ -98,6 +98,7 @@
     }
     cell.textLabel.text = @"Hello, World";
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
    
     return cell;
 }
@@ -105,7 +106,11 @@
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
     _detailView = [self.storyboard instantiateViewControllerWithIdentifier:@"detail"];
+    //_detailView.modalTransitionStyle = UIModalTransitionStylePartialCurl;
+    _detailView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    
     [self presentModalViewController:_detailView animated:YES];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath 
