@@ -21,5 +21,6 @@
 @property (nonatomic, retain) UITableView *tableView;
 @property (strong, nonatomic) id dataObject;
 @property(nonatomic, retain) DetailViewController *detailView;
+- (IBAction)addTask:(id)sender;
 
 @end

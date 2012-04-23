@@ -30,9 +30,10 @@
     [super loadView];
     
     self.tableView = [[UITableView alloc] initWithFrame:self.customView.bounds];
+    self.dataLabel.backgroundColor = [UIColor clearColor];
       
-    /*UIImageView *view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"paper.jpg"]];
-    self.tableView.backgroundView = view;*/
+   // UIImageView *view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Old-Paper-1024.jpg"]];
+   // self.tableView.backgroundView = view;
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -146,4 +147,6 @@
     self.tableView.editing = TRUE;
 }*/
 
+- (IBAction)addTask:(id)sender {
+}
 @end
