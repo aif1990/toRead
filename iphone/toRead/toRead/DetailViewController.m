@@ -7,9 +7,12 @@
 //
 
 #import "DetailViewController.h"
+#import "DataViewController.h"
 
 @implementation DetailViewController
 @synthesize doneButton;
+@synthesize detailLabel;
+@synthesize dataViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,17 +41,19 @@
 }
 
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //self.detailLabel.text = dataViewController.dataLabel.text;
 }
-*/
+
 
 - (void)viewDidUnload
 {
     [self setDoneButton:nil];
+    [self setDetailLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

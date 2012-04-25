@@ -110,13 +110,10 @@
     //_detailView.modalTransitionStyle = UIModalTransitionStylePartialCurl;
     _detailView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     
+    _detailView.dataViewController = self;
+    
     [self presentModalViewController:_detailView animated:YES];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath 
-{
-    
 }
 
 
