@@ -2,20 +2,24 @@
 //  DetailViewController.h
 //  toRead
 //
-//  Created by Ingrid Funie on 19/04/2012.
+//  Created by Ingrid Funie on 28/04/2012.
 //  Copyright (c) 2012 ICL. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@class DataViewController;
+@class ViewController;
+@class DoneViewController;
 
 @interface DetailViewController : UIViewController {
-    DataViewController *dataViewController;
+    ViewController *viewController;
+    DoneViewController *doneViewController;
 }
-@property (weak, nonatomic) IBOutlet UIButton *doneButton;
-@property (weak, nonatomic) IBOutlet UILabel *detailLabel;
-@property (nonatomic, retain) DataViewController *dataViewController; 
+
+
 - (IBAction)done:(id)sender;
+
+@property (nonatomic, retain) ViewController *viewController; 
+@property (nonatomic, retain) DoneViewController *doneViewController;
 
 @end

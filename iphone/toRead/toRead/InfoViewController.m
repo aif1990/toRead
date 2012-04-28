@@ -1,22 +1,18 @@
 //
-//  DetailViewController.m
+//  InfoViewController.m
 //  toRead
 //
 //  Created by Ingrid Funie on 28/04/2012.
 //  Copyright (c) 2012 ICL. All rights reserved.
 //
 
-#import "DetailViewController.h"
-#import "ViewController.h"
+#import "InfoViewController.h"
 
-@implementation DetailViewController
-
-@synthesize viewController;
-@synthesize doneViewController;
+@implementation InfoViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:@"DetailView" bundle:nil];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }
@@ -62,8 +58,6 @@
 }
 
 - (IBAction)done:(id)sender {
-    
     [self dismissModalViewControllerAnimated:YES];
-    
 }
 @end

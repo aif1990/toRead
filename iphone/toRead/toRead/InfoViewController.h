@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  InfoViewController.h
 //  toRead
 //
 //  Created by Ingrid Funie on 28/04/2012.
@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
+@interface InfoViewController : UIViewController
+- (IBAction)done:(id)sender;
 
 @end

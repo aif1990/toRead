@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "15DDAA4615376EF500171667"
+               BlueprintIdentifier = "15360610154C2ADE00200E54"
                BuildableName = "toRead.app"
                BlueprintName = "toRead"
                ReferencedContainer = "container:toRead.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "15DDAA7015376EF600171667"
+               BlueprintIdentifier = "15360634154C2ADE00200E54"
                BuildableName = "toReadTests.octest"
                BlueprintName = "toReadTests"
                ReferencedContainer = "container:toRead.xcodeproj">
@@ -42,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "15DDAA4615376EF500171667"
+            BlueprintIdentifier = "15360610154C2ADE00200E54"
             BuildableName = "toRead.app"
             BlueprintName = "toRead"
             ReferencedContainer = "container:toRead.xcodeproj">
@@ -61,7 +61,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "15DDAA4615376EF500171667"
+            BlueprintIdentifier = "15360610154C2ADE00200E54"
             BuildableName = "toRead.app"
             BlueprintName = "toRead"
             ReferencedContainer = "container:toRead.xcodeproj">
@@ -79,7 +79,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "15DDAA4615376EF500171667"
+            BlueprintIdentifier = "15360610154C2ADE00200E54"
             BuildableName = "toRead.app"
             BlueprintName = "toRead"
             ReferencedContainer = "container:toRead.xcodeproj">

@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  toRead
 //
-//  Created by Ingrid Funie on 12/04/2012.
+//  Created by Ingrid Funie on 28/04/2012.
 //  Copyright (c) 2012 ICL. All rights reserved.
 //
 
@@ -17,7 +17,7 @@
     // Override point for customization after application launch.
     return YES;
 }
-
+							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     /*

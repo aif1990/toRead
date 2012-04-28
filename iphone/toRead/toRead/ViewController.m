@@ -1,51 +1,34 @@
 //
-//  DataViewController.m
+//  ViewController.m
 //  toRead
 //
-//  Created by Ingrid Funie on 12/04/2012.
+//  Created by Ingrid Funie on 28/04/2012.
 //  Copyright (c) 2012 ICL. All rights reserved.
 //
 
-#import "DataViewController.h"
+#import "ViewController.h"
 #import "DetailViewController.h"
 
-@implementation DataViewController
-
-@synthesize dataLabel = _dataLabel;
+@implementation ViewController
 @synthesize customView = _customView;
-@synthesize dataObject = _dataObject;
-@synthesize tableView = _tableView;
 @synthesize detailView = _detailView;
+@synthesize tableView = _tableView;
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    
+    
     // Release any cached data, images, etc that aren't in use.
 }
 
 #pragma mark - View lifecycle
 
-- (void)loadView 
-{
-    [super loadView];
-    
-    self.tableView = [[UITableView alloc] initWithFrame:self.customView.bounds];
-    self.dataLabel.backgroundColor = [UIColor clearColor];
-      
-   // UIImageView *view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Old-Paper-1024.jpg"]];
-   // self.tableView.backgroundView = view;
-    
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    
-    self.tableView.backgroundColor = [UIColor clearColor];
-    self.customView.backgroundColor = [UIColor clearColor];
-    
-    [self.customView addSubview:self.tableView];
-}
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 }
@@ -57,11 +40,73 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
+-(void)loadView {
+    
+    [super loadView];
+    
+    self.tableView = [[UITableView alloc] initWithFrame:self.customView.bounds];
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    self.tableView.backgroundColor = [UIColor clearColor];
+    self.customView.backgroundColor = [UIColor clearColor];
+    
+    [self.customView addSubview:self.tableView];
+
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)theTableView 
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)theTableView numberOfRowsInSection:(NSInteger)section 
+{
+    return 3;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)theTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    cell.textLabel.text = @"Hello, World";
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.font = [UIFont fontWithName:@"Chalkduster" size:14.00];
+    
+    //cell.accessoryType = UITableViewCellAccessoryCheckmark; 
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    return cell;
+
+    
+}
+
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    _detailView = [self.storyboard instantiateViewControllerWithIdentifier:@"detailView"];
+    //_detailView.modalTransitionStyle = UIModalTransitionStylePartialCurl;
+    _detailView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    
+    _detailView.viewController = self;
+    
+    [self presentModalViewController:_detailView animated:YES];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.dataLabel.text = [self.dataObject description];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -79,57 +124,6 @@
 	[super viewDidDisappear:animated];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)theTableView 
-{
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)theTableView numberOfRowsInSection:(NSInteger)section 
-{
-    return 3;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)theTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    }
-    cell.textLabel.text = @"Hello, World";
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-   
-    return cell;
-}
-
--(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
-{
-    _detailView = [self.storyboard instantiateViewControllerWithIdentifier:@"detail"];
-    //_detailView.modalTransitionStyle = UIModalTransitionStylePartialCurl;
-    _detailView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    
-    _detailView.dataViewController = self;
-    
-    [self presentModalViewController:_detailView animated:YES];
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-
-// Override to support conditional editing of the table view.
-/*- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return YES if you want the specified item to be editable.
-    return YES;
-}*/
-
-// Override to support editing the table view.
-/*- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        //add code here for when you hit delete
-    }  
-}*/
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
@@ -140,10 +134,4 @@
     }
 }
 
-/*-(void)setEditing:(BOOL)editing animated:(BOOL)animated {
-    self.tableView.editing = TRUE;
-}*/
-
-- (IBAction)addTask:(id)sender {
-}
 @end
