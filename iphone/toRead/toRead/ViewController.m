@@ -52,6 +52,8 @@
     self.tableView.backgroundColor = [UIColor clearColor];
     self.customView.backgroundColor = [UIColor clearColor];
     
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     [self.customView addSubview:self.tableView];
 
 }
@@ -77,20 +79,23 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     cell.textLabel.text = @"Hello, World";
+    cell.detailTextLabel.text = @"2012-05-07";
     cell.textLabel.textColor = [UIColor whiteColor];
+    cell.detailTextLabel.textColor = [UIColor grayColor];
     cell.textLabel.font = [UIFont fontWithName:@"Chalkduster" size:14.00];
+    cell.detailTextLabel.font = [UIFont fontWithName:@"Chalkduster" size:9.00];
     
     //cell.accessoryType = UITableViewCellAccessoryCheckmark; 
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    return cell;
-
     
+    return cell;
 }
 
--(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
-{
+-(void) tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     _detailView = [self.storyboard instantiateViewControllerWithIdentifier:@"detailView"];
     //_detailView.modalTransitionStyle = UIModalTransitionStylePartialCurl;
     _detailView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
@@ -99,6 +104,11 @@
     
     [self presentModalViewController:_detailView animated:YES];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    [self.tableView cellForRowAtIndexPath:indexPath].detailTextLabel.textColor = [UIColor greenColor];  
 }
 
 
