@@ -55,6 +55,8 @@
     self.tableView.backgroundColor = [UIColor clearColor];
     self.customView.backgroundColor = [UIColor clearColor];
     
+     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     [self.customView addSubview:self.tableView];
 
 }
@@ -81,9 +83,16 @@
     }
     cell.textLabel.text = @"Hi Ingrid";
     cell.textLabel.textColor = [UIColor whiteColor];
+    cell.detailTextLabel.text = @"2012-03-07";
+    cell.detailTextLabel.textColor = [UIColor grayColor];
     cell.textLabel.font = [UIFont fontWithName:@"Chalkduster" size:14.00];
+    cell.detailTextLabel.font = [UIFont fontWithName:@"Chalkduster" size:9.00];
     
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+   // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
@@ -91,8 +100,7 @@
     
 }
 
--(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
-{
+-(void) tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     _detailView = [self.storyboard instantiateViewControllerWithIdentifier:@"detailView"];
     _detailView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     
@@ -100,6 +108,12 @@
     
     [self presentModalViewController:_detailView animated:YES];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    [self.tableView cellForRowAtIndexPath:indexPath].detailTextLabel.textColor = [UIColor greenColor];  
 }
 
 
@@ -111,10 +125,36 @@
     // e.g. self.myOutlet = nil;
 }
 
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+	[super viewWillDisappear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+	[super viewDidDisappear:animated];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-	return YES;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    } else {
+        return YES;
+    }
 }
+
 
 @end

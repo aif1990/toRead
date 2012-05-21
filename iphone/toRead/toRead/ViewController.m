@@ -14,6 +14,14 @@
 @synthesize detailView = _detailView;
 @synthesize tableView = _tableView;
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:@"ReadView" bundle:nil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
 
 - (void)didReceiveMemoryWarning
 {
